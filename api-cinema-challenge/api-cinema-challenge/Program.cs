@@ -12,6 +12,7 @@ builder.Services.AddDbContext<CinemaContext>(options =>
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 builder.Services.AddScoped<IScreeningRepository, ScreeningRepository>();
+builder.Services.AddScoped<IBookingRepository, BookingRepository>();
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
@@ -87,6 +88,7 @@ app.MapCustomerEndpoints();
 app.MapMovieEndpoints();
 app.MapScreeningEndpoints();
 app.MapRegisterEndpoints();
+app.MapBookingEndpoints();
 app.MapLoginEndpoints(builder.Configuration);
 
 app.Run();

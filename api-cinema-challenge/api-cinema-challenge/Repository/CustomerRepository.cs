@@ -35,7 +35,7 @@ public class CustomerRepository : ICustomerRepository
 
         existingCustomer.Name = customer.Name;
         existingCustomer.Email = customer.Email;
-        existingCustomer.Phone = customer.Phone;
+        existingCustomer.Phonenumber = customer.Phonenumber;
         existingCustomer.UpdatedAt = DateTime.UtcNow;
 
         await _context.SaveChangesAsync();

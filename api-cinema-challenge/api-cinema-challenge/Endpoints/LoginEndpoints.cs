@@ -1,8 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using api_cinema_challenge.Data;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
@@ -14,8 +12,8 @@ public static class LoginEndpoints
 
         app.MapPost("/login", async (LoginRequest login, CinemaContext db) =>
         {
-            var user = await db.Users.SingleOrDefaultAsync(u => u.Username == login.Username);
-            if (user == null || user.PasswordHash != login.Password)
+            var user = await db.Customers.SingleOrDefaultAsync(u => u.Name == login.Name);
+            if (user == null || user.Password != login.Password)
                 return Results.Unauthorized();
 
             var key = Encoding.UTF8.GetBytes(jwtSettings.GetValue<string>("Key"));
