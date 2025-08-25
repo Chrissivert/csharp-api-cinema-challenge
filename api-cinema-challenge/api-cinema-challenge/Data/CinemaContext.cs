@@ -9,6 +9,7 @@ namespace api_cinema_challenge.Data
         public DbSet<Customer> Customers { get; set; } = null!;
         public DbSet<Movie> Movies { get; set; } = null!;
         public DbSet<Screening> Screenings { get; set; } = null!;
+        public DbSet<User> Users { get; set; } = null!;
 
 
         public CinemaContext(DbContextOptions<CinemaContext> options) : base(options)
