@@ -18,6 +18,13 @@ builder.Services.AddScoped<IBookingRepository, BookingRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API Cinema Challenge",
+        Version = "v1"
+    });
+
+    // JWT config
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -43,7 +50,7 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-builder.Services.AddDbContext<CinemaContext>();
+
 
 // JWT config
 var jwtSettings = builder.Configuration.GetSection("Jwt");
